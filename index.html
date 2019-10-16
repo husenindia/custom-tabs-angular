@@ -1,0 +1,57 @@
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+    <style id="compiled-css" type="text/css">
+    .active { color: red; }
+    .tab-listing { overflow: hidden; padding: 0; }
+    .tab-listing li { list-style: none; float: left; margin-right: 1px; }
+    .tab-listing li a { background-color: #CCC; color: #000; display: block; padding: 10px 20px; font-size: 14px; }
+    .tab-listing li.active a { background-color: #000; color: #fff; }
+    .tabs-main-container { padding: 20px; border: 1px solid #CCC; }
+    </style>
+    <script type="text/javascript">
+        var app = angular.module('app', []);
+        app.controller('selectFilter', function ($scope) {
+            $scope.select = function (index) {
+                $scope.tabvalue = index;
+            };
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="app" class="filters_ct ng-scope" ng-controller="selectFilter">
+        <ul class="tab-listing" ng-init="tabvalue='tab1'">
+            <li ng-click="select('tab1')" ng-class="{active: 'tab1' == tabvalue} " class="active">
+                <a href="javascript:void(0);">Tab 1</a>
+            </li>
+            <li ng-click="select('tab2')" ng-class="{active: 'tab2' == tabvalue} " class="">
+                <a href="javascript:void(0);">Tab 2</a>
+            </li>
+            <li ng-click="select('tab3')" ng-class="{active: 'tab3' == tabvalue} " class="">
+                <a href="javascript:void(0);">Tab 3</a>
+            </li>
+            <li ng-click="select('tab4')" ng-class="{active: 'tab4' == tabvalue} " class="">
+                <a href="javascript:void(0);">Tab 4</a>
+            </li>
+        </ul>
+        <div class="tabs-main-container">
+            <div class="tab-content" ng-show="'tab1' == tabvalue">
+                Tab 1 Content
+            </div>
+            <div class="tab-content ng-hide" ng-show="'tab2' == tabvalue">
+                Tab 2 Content
+            </div>
+            <div class="tab-content ng-hide" ng-show="'tab3' == tabvalue">
+                Tab 3 Content
+            </div>
+            <div class="tab-content ng-hide" ng-show="'tab4' == tabvalue">
+                Tab 4 Content
+            </div>
+        </div>
+    </div>
+</body>
+</html>
